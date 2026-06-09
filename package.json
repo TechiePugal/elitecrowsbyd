@@ -1,0 +1,34 @@
+{
+  "name": "elitecrows-infotech",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@chakra-ui/react": "^2.8.2",
+    "@emailjs/browser": "^4.4.1",
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@react-three/drei": "^9.110.0",
+    "@react-three/fiber": "^8.17.0",
+    "framer-motion": "^11.0.8",
+    "lucide-react": "^0.344.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-helmet-async": "^3.0.0",
+    "react-router-dom": "^7.17.0",
+    "three": "^0.184.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.5",
+    "@types/react-dom": "^18.3.0",
+    "@types/three": "^0.184.1",
+    "typescript": "^5.5.3",
+    "vite": "^6.3.5",
+    "@vitejs/plugin-react": "^4.3.4"
+  }
+}
