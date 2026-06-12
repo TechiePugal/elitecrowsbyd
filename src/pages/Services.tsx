@@ -372,6 +372,38 @@ export default function Services() {
           </div>
         </section>
 
+        <section className="services-locations" style={{ padding: '80px 0', background: '#FFFFFF' }}>
+          <div className="container" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}>
+            <Reveal>
+              <div style={{ textAlign: 'center', marginBottom: '36px' }}>
+                <div style={{ display: 'inline-block', padding: '4px 14px', background: 'rgba(0,102,255,0.06)', borderRadius: '100px', marginBottom: '18px', border: '1px solid rgba(0,102,255,0.08)' }}>
+                  <span style={{ fontSize: '11px', fontWeight: 800, color: COLORS.primary, letterSpacing: '0.04em', textTransform: 'uppercase' }}>Locations</span>
+                </div>
+                <h2 style={{ fontSize: 'clamp(28px, 4vw, 38px)', fontWeight: 800, letterSpacing: '-0.03em', color: COLORS.text, marginBottom: '12px' }}>
+                  Local service pages for Tamil Nadu markets
+                </h2>
+                <p style={{ color: COLORS.muted, maxWidth: '700px', margin: '0 auto', lineHeight: 1.7 }}>
+                  If you need a regional partner, start with our city-specific pages for Coimbatore, Tiruppur, Erode, and Salem, or view the full service-area page for the surrounding districts and towns.
+                </p>
+              </div>
+            </Reveal>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(210px, 1fr))', gap: '16px' }}>
+              {[
+                ['Coimbatore', '/coimbatore'],
+                ['Tiruppur', '/tiruppur'],
+                ['Erode', '/erode'],
+                ['Salem', '/salem'],
+                ['Service Areas', '/service-areas'],
+              ].map(([label, path]) => (
+                <Link key={path} to={path} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '10px', padding: '16px 18px', borderRadius: '16px', border: '1px solid rgba(0,0,0,0.08)', textDecoration: 'none', color: COLORS.text, background: '#FAFBFC', fontWeight: 600 }}>
+                  <span>{label}</span>
+                  <ArrowRight size={15} color={COLORS.primary} />
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* SERVICES GRID – Responsive equal height cards */}
         <section id="services-grid" className="services-grid-section" style={{ background: '#FFFFFF', padding: '100px 0' }}>
           <div className="container">

@@ -895,6 +895,39 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="service-areas-preview" style={{ padding: '100px 0', background: '#FFFFFF' }}>
+          <div className="container" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}>
+            <Reveal>
+              <div style={{ textAlign: 'center', marginBottom: '48px' }}>
+                <div style={{ display: 'inline-block', padding: '4px 14px', background: 'rgba(0,102,255,0.06)', borderRadius: '100px', marginBottom: '18px', border: '1px solid rgba(0,102,255,0.08)' }}>
+                  <span style={{ fontSize: '11px', fontWeight: 800, color: colors.primary, letterSpacing: '0.04em', textTransform: 'uppercase' }}>Service Areas</span>
+                </div>
+                <h2 style={{ fontSize: 'clamp(28px, 4vw, 40px)', fontWeight: 800, letterSpacing: '-0.03em', color: colors.text, marginBottom: '12px' }}>
+                  Serving businesses across Tamil Nadu
+                </h2>
+                <p style={{ color: colors.muted, maxWidth: '700px', margin: '0 auto', lineHeight: 1.7 }}>
+                  We support clients in Coimbatore, Tiruppur, Erode, Salem, and across nearby industrial and commercial hubs with custom software, AI automation, cloud migration, and cybersecurity.
+                </p>
+              </div>
+            </Reveal>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '18px' }}>
+              {[
+                ['Coimbatore AI automation services', '/coimbatore'],
+                ['Tiruppur software development', '/tiruppur'],
+                ['Erode cloud consulting', '/erode'],
+                ['Salem cybersecurity services', '/salem'],
+                ['Full service area list', '/service-areas'],
+              ].map(([label, path]) => (
+                <Link key={path} to={path} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px', padding: '18px 20px', borderRadius: '18px', border: '1px solid rgba(0,0,0,0.08)', background: '#FAFBFC', color: colors.text, textDecoration: 'none', fontWeight: 600 }}>
+                  <span>{label}</span>
+                  <ArrowRight size={16} color={colors.primary} />
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* ══════════════════════ CTA ══════════════════════ */}
         <section className="cta-section" style={{ padding: '120px 0', background: colors.sectionBg1, zIndex: 2, position: 'relative' }}>
           <div className="container" style={{ maxWidth: '960px', margin: '0 auto' }}>

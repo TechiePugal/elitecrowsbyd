@@ -266,6 +266,43 @@ export default function Footer() {
               </div>
             </nav>
 
+            <nav aria-label="Locations navigation">
+              <div style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: accentBlue, marginBottom: '16px' }}>
+                Locations
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                {[
+                  ['Coimbatore AI automation', '/coimbatore'],
+                  ['Tiruppur software development', '/tiruppur'],
+                  ['Erode cloud consulting', '/erode'],
+                  ['Salem cybersecurity services', '/salem'],
+                  ['Tamil Nadu service areas', '/service-areas'],
+                ].map(([label, path]) => (
+                  <Link key={path} to={path} style={{ fontSize: '13px', color: '#86868B', textDecoration: 'none', transition: 'color 0.15s' }} onMouseEnter={e => (e.currentTarget.style.color = accentBlue)} onMouseLeave={e => (e.currentTarget.style.color = '#86868B')}>
+                    {label}
+                  </Link>
+                ))}
+              </div>
+            </nav>
+
+            <nav aria-label="Technology resources">
+              <div style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: accentBlue, marginBottom: '16px' }}>
+                Resources
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                {[
+                  ['React docs', 'https://react.dev/'],
+                  ['Vite docs', 'https://vitejs.dev/guide/'],
+                  ['AWS architecture center', 'https://aws.amazon.com/architecture/'],
+                  ['OWASP Top 10', 'https://owasp.org/www-project-top-ten/'],
+                ].map(([label, href]) => (
+                  <a key={href} href={href} target="_blank" rel="noopener noreferrer" style={{ fontSize: '13px', color: '#86868B', textDecoration: 'none', transition: 'color 0.15s' }} onMouseEnter={e => (e.currentTarget.style.color = accentBlue)} onMouseLeave={e => (e.currentTarget.style.color = '#86868B')}>
+                    {label}
+                  </a>
+                ))}
+              </div>
+            </nav>
+
             {/* Contact */}
             <address style={{ fontStyle: 'normal' }} itemScope itemType="https://schema.org/PostalAddress">
               <div style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: accentBlue, marginBottom: '16px' }}>
@@ -275,7 +312,7 @@ export default function Footer() {
                 <div style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
                   <MapPin size={14} color="#A1A1A6" style={{ marginTop: '2px', flexShrink: 0 }} />
                   <span style={{ fontSize: '13px', color: '#86868B', lineHeight: 1.5 }} itemProp="addressLocality">
-                    Gobichettipalayam, Tamil Nadu, India
+                    Gobichettipalayam College Pirivu, Gobichettipalayam, Tamil Nadu 638453, India
                   </span>
                 </div>
                 <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
@@ -395,6 +432,7 @@ export default function Footer() {
           <strong>EliteCrows Infotech</strong><br />
           Email: <a href="mailto:elitecrowsindia@gmail.com" style={{ color: accentBlue, textDecoration: 'none' }}>elitecrowsindia@gmail.com</a><br />
           Phone: <a href="tel:+916383106107" style={{ color: accentBlue, textDecoration: 'none' }}>+91 6383106107</a>
+          <br />Address: Gobichettipalayam College Pirivu, Gobichettipalayam, Tamil Nadu 638453, India
         </p>
 
         <p style={{ marginTop: '2rem', borderTop: '1px solid #E5E5E7', paddingTop: '1rem', fontSize: '12px', color: '#86868B' }}>
@@ -471,7 +509,7 @@ export default function Footer() {
           <strong>EliteCrows Infotech</strong><br />
           Email: <a href="mailto:elitecrowsindia@gmail.com" style={{ color: accentBlue, textDecoration: 'none' }}>elitecrowsindia@gmail.com</a><br />
           Phone: <a href="tel:+916383106107" style={{ color: accentBlue, textDecoration: 'none' }}>+91 6383106107</a><br />
-          Address: Gobichettipalayam, Tamil Nadu, India
+          Address: Gobichettipalayam College Pirivu, Gobichettipalayam, Tamil Nadu 638453, India
         </p>
 
         <p style={{ marginTop: '2rem', borderTop: '1px solid #E5E5E7', paddingTop: '1rem', fontSize: '12px', color: '#86868B' }}>

@@ -9,7 +9,7 @@ import {
 const contactInfo = [
   { icon: Mail, color: '#0071E3', bg: '#EAF3FF', title: 'Email', details: ['elitecrowsindia@gmail.com'] },
   { icon: Phone, color: '#34C759', bg: '#EDFBF1', title: 'Phone', details: ['+91 6383106107'] },
-  { icon: MapPin, color: '#FF3B30', bg: '#FFF0EF', title: 'Service Area', details: ['All Over Tamil Nadu', 'Remote Services Worldwide'] },
+  { icon: MapPin, color: '#FF3B30', bg: '#FFF0EF', title: 'Office Address', details: ['Gobichettipalayam College Pirivu', 'Gobichettipalayam, Tamil Nadu 638453'] },
   { icon: Clock, color: '#FF9500', bg: '#FFF5E6', title: 'Business Hours', details: ['Mon – Sat: 9 AM – 6 PM', 'Sunday: Closed'] },
 ];
 

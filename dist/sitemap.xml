@@ -36,4 +36,34 @@
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
+    <url>
+      <loc>https://elitecrows.in/coimbatore</loc>
+      <lastmod>2025-01-01</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.7</priority>
+    </url>
+    <url>
+      <loc>https://elitecrows.in/tiruppur</loc>
+      <lastmod>2025-01-01</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.7</priority>
+    </url>
+    <url>
+      <loc>https://elitecrows.in/erode</loc>
+      <lastmod>2025-01-01</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.7</priority>
+    </url>
+    <url>
+      <loc>https://elitecrows.in/salem</loc>
+      <lastmod>2025-01-01</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.7</priority>
+    </url>
+    <url>
+      <loc>https://elitecrows.in/service-areas</loc>
+      <lastmod>2025-01-01</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.7</priority>
+    </url>
 </urlset>
