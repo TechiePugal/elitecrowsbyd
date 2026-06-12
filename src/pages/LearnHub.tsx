@@ -541,7 +541,7 @@ Submitted via LearnHub Page
         </section>
 
         {/* Gallery Section */}
-        <section style={{ padding: 'clamp(60px, 10vw, 80px) 0', background: COLORS.background }}>
+        {/* <section style={{ padding: 'clamp(60px, 10vw, 80px) 0', background: COLORS.background }}>
           <div className="container">
             <div style={{ textAlign: 'center', maxWidth: '700px', margin: '0 auto 48px' }}>
               <span style={{ display: 'inline-block', padding: '6px 14px', background: `${COLORS.primary}10`, borderRadius: '50px', fontSize: '13px', fontWeight: 600, color: COLORS.primary, marginBottom: '16px' }}>GALLERY</span>
@@ -562,7 +562,7 @@ Submitted via LearnHub Page
               ))}
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* Lightbox Modal */}
         {lightbox !== null && (
