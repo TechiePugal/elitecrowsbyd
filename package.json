@@ -10,6 +10,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "postbuild": "tsx scripts/prerender.tsx",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -32,7 +33,14 @@
     "@types/react-dom": "^18.3.0",
     "@types/three": "^0.184.1",
     "@vitejs/plugin-react": "^4.3.4",
+    "tsx": "^4.22.4",
     "typescript": "^5.5.3",
     "vite": "^6.3.5"
+  },
+  "reactSnap": {
+    "source": "dist",
+    "minifyHtml": {
+      "collapseWhitespace": false
+    }
   }
 }
