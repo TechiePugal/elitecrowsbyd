@@ -3,10 +3,9 @@ import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import {
-  Code, Search, Bot, Factory, Globe, ArrowRight, ChevronDown,
-  Briefcase, Users, Heart, Headphones, TrendingUp, Shield, Award,
-  Smartphone, Cloud, Zap, ExternalLink, Sparkles, Cpu, MessageCircle,
-  BarChart3, Layers, ShoppingCart, Workflow
+  Wallet, PiggyBank, Building2, Receipt, PieChart, TrendingUp, Bot,
+  Users, Package, Landmark, BarChart3, Target, Sparkles, ArrowRight,
+  ExternalLink, Briefcase, Heart, Headphones, Layers, ShieldCheck
 } from 'lucide-react';
 
 const COLORS = {
@@ -100,14 +99,14 @@ function Reveal({
   );
 }
 
-/* ─── Status Badge (worked vs working) ─── */
-function StatusBadge({ status }: { status: 'Live' | 'Ongoing' | 'Completed' }) {
+/* ─── Status Badge (product availability) ─── */
+function StatusBadge({ status }: { status: 'Available' | 'Beta' | 'Coming Soon' }) {
   const map = {
-    Live: { dot: '#10B981', text: '#047857', bg: 'rgba(16,185,129,0.08)', border: 'rgba(16,185,129,0.2)', label: 'Live' },
-    Ongoing: { dot: '#F59E0B', text: '#B45309', bg: 'rgba(245,158,11,0.08)', border: 'rgba(245,158,11,0.22)', label: 'In Progress' },
-    Completed: { dot: '#0066FF', text: '#0052CC', bg: 'rgba(0,102,255,0.07)', border: 'rgba(0,102,255,0.18)', label: 'Delivered' },
+    Available: { dot: '#10B981', text: '#047857', bg: 'rgba(16,185,129,0.08)', border: 'rgba(16,185,129,0.2)', label: 'Available' },
+    Beta: { dot: '#F59E0B', text: '#B45309', bg: 'rgba(245,158,11,0.08)', border: 'rgba(245,158,11,0.22)', label: 'Beta' },
+    'Coming Soon': { dot: '#7C3AED', text: '#6D28D9', bg: 'rgba(124,58,237,0.08)', border: 'rgba(124,58,237,0.2)', label: 'Coming Soon' },
   };
-  const s = map[status] || map.Completed;
+  const s = map[status] || map.Available;
   return (
     <span style={{
       display: 'inline-flex',
@@ -124,7 +123,7 @@ function StatusBadge({ status }: { status: 'Live' | 'Ongoing' | 'Completed' }) {
       border: `1px solid ${s.border}`,
     }}>
       <motion.span
-        animate={status === 'Ongoing' || status === 'Live' ? { opacity: [1, 0.3, 1], scale: [1, 0.85, 1] } : {}}
+        animate={status !== 'Coming Soon' ? { opacity: [1, 0.3, 1], scale: [1, 0.85, 1] } : {}}
         transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
         style={{ width: '7px', height: '7px', borderRadius: '50%', background: s.dot, display: 'inline-block' }}
       />
@@ -222,197 +221,210 @@ function HeroCrystals() {
   );
 }
 
-/* ─── Project Data ─── */
-const projects = [
+/* ─── Product Data ─── */
+const products = [
   {
-    category: 'AI Solutions',
-    icon: Cpu,
-    color: '#7C3AED',
-    gradient: 'linear-gradient(135deg, #7C3AED, #0066FF)',
-    status: 'Ongoing',
-    title: 'Agentic AI Workflow Automation',
-    description: 'Autonomous AI agents that handle multi-step business workflows — lead qualification, document processing, and CRM updates — with human-in-the-loop approvals and tool calling.',
-    technologies: ['LangChain', 'OpenAI', 'Python', 'FastAPI', 'Vector DB'],
-    highlights: ['Autonomous Agents', 'Tool Calling', 'Human-in-Loop', '70% Faster Ops'],
-  },
-  {
-    category: 'AI Solutions',
-    icon: Bot,
-    color: '#EC4899',
-    gradient: 'linear-gradient(135deg, #EC4899, #7C3AED)',
-    status: 'Live',
-    title: 'RAG Knowledge Assistant',
-    description: 'Generative AI assistant trained on private company data using Retrieval-Augmented Generation, delivering accurate, source-cited answers across documents, PDFs, and databases.',
-    technologies: ['Python', 'LLM', 'Pinecone', 'React', 'WebSocket'],
-    highlights: ['Private Data', 'Source Citations', 'Multi-format', 'Context Aware'],
-  },
-  {
-    category: 'Mobile Development',
-    icon: Smartphone,
-    color: '#06B6D4',
-    gradient: 'linear-gradient(135deg, #06B6D4, #0066FF)',
-    status: 'Live',
-    title: 'Cross-Platform Mobile App',
-    description: 'iOS and Android delivery app built with a single codebase — real-time order tracking, push notifications, in-app payments, and offline-first sync.',
-    technologies: ['React Native', 'Flutter', 'Firebase', 'Stripe', 'Redux'],
-    highlights: ['iOS + Android', 'Offline Sync', 'Push Alerts', 'Live Tracking'],
-  },
-  {
-    category: 'Web Development',
-    icon: ShoppingCart,
+    category: 'FinTech',
+    icon: Wallet,
     color: '#0066FF',
     gradient: 'linear-gradient(135deg, #0066FF, #7C3AED)',
-    status: 'Live',
-    title: 'Enterprise E-Commerce Platform',
-    description: 'Full-featured online shopping platform with AI-powered recommendations, payment integration, real-time inventory management, and a customer analytics dashboard.',
-    technologies: ['React', 'Node.js', 'MongoDB', 'Stripe', 'Redis'],
-    highlights: ['AI Recommendations', 'Real-time Analytics', 'Payment Gateway', 'Admin Dashboard'],
+    status: 'Available',
+    title: 'FinFlow — Finance App',
+    tagline: 'Personal & SME money management',
+    description: 'All-in-one finance app to track expenses, set budgets, sync UPI & bank accounts, and get clear cash-flow reports — built for individuals and small businesses.',
+    features: ['Expense Tracking', 'Smart Budgets', 'UPI & Bank Sync', 'Cash-flow Reports'],
+    platforms: ['Web', 'iOS', 'Android'],
   },
   {
-    category: 'SaaS Development',
-    icon: Layers,
-    color: '#8B5CF6',
-    gradient: 'linear-gradient(135deg, #8B5CF6, #EC4899)',
-    status: 'Ongoing',
-    title: 'Custom CRM & ERP SaaS',
-    description: 'Multi-tenant SaaS platform unifying sales, inventory, HR, and billing with role-based access, subscription management, and automated invoicing.',
-    technologies: ['Next.js', 'PostgreSQL', 'Prisma', 'Stripe', 'AWS'],
-    highlights: ['Multi-tenant', 'Role-based Access', 'Subscriptions', 'Auto Invoicing'],
-  },
-  {
-    category: 'AI Solutions',
-    icon: MessageCircle,
-    color: '#22C55E',
-    gradient: 'linear-gradient(135deg, #22C55E, #0066FF)',
-    status: 'Live',
-    title: 'WhatsApp Business Automation',
-    description: 'Conversational commerce bot on WhatsApp Cloud API — automated catalogs, order capture, payment links, and AI replies that resolve 80% of queries without an agent.',
-    technologies: ['WhatsApp API', 'Node.js', 'OpenAI', 'MongoDB', 'Webhooks'],
-    highlights: ['24/7 Replies', 'Order Capture', 'Payment Links', 'Multi-language'],
-  },
-  {
-    category: 'Software Development',
-    icon: Code,
+    category: 'FinTech',
+    icon: PiggyBank,
     color: '#7C3AED',
     gradient: 'linear-gradient(135deg, #7C3AED, #0066FF)',
-    status: 'Live',
-    title: 'Hospital Management System',
-    description: 'Comprehensive healthcare management for patient records, appointments, billing, and inventory with HIPAA-compliant data handling and a telemedicine module.',
-    technologies: ['React', 'PostgreSQL', 'Express', 'TypeScript', 'Docker'],
-    highlights: ['Patient Portal', 'Telemedicine', 'Billing System', 'Analytics'],
+    status: 'Available',
+    title: 'ChitEase — Chit Fund App',
+    tagline: 'Run chit funds end-to-end',
+    description: 'Complete chit fund management with automated auctions, member ledgers, payment reminders, and audit-ready compliance reports — paperwork done for you.',
+    features: ['Auction Automation', 'Member Ledger', 'Payment Reminders', 'Compliance Reports'],
+    platforms: ['Web', 'iOS', 'Android'],
   },
   {
-    category: 'Data & Analytics',
-    icon: BarChart3,
-    color: '#F97316',
-    gradient: 'linear-gradient(135deg, #F97316, #EC4899)',
-    status: 'Ongoing',
-    title: 'Real-Time BI Dashboard',
-    description: 'Business intelligence platform turning raw operational data into live KPI dashboards, forecasts, and automated reports with drill-down analytics.',
-    technologies: ['React', 'Python', 'ClickHouse', 'D3.js', 'Airflow'],
-    highlights: ['Live KPIs', 'Forecasting', 'Auto Reports', 'Drill-down'],
+    category: 'Real Estate',
+    icon: Building2,
+    color: '#06B6D4',
+    gradient: 'linear-gradient(135deg, #06B6D4, #0066FF)',
+    status: 'Available',
+    title: 'EstateHub — Real Estate App',
+    tagline: 'List, tour, and close faster',
+    description: 'Property marketplace and CRM with rich listings, virtual tours, lead capture, EMI calculators, and agent dashboards for buyers, sellers, and brokers.',
+    features: ['Property Listings', 'Virtual Tours', 'Lead CRM', 'EMI Calculator'],
+    platforms: ['Web', 'iOS', 'Android'],
   },
   {
-    category: 'SEO & Digital Marketing',
-    icon: Search,
+    category: 'Billing & Accounting',
+    icon: Receipt,
     color: '#10B981',
     gradient: 'linear-gradient(135deg, #10B981, #0066FF)',
-    status: 'Live',
-    title: 'SaaS SEO & Growth Campaign',
-    description: 'Complete SEO overhaul with technical optimization, content strategy, and conversion rate optimization that delivered 300% organic traffic growth.',
-    technologies: ['Technical SEO', 'Content Strategy', 'Analytics', 'Schema Markup'],
-    highlights: ['Page 1 Rankings', 'Core Web Vitals', '300% Growth', 'CRO'],
+    status: 'Available',
+    title: 'SwiftBill — Billing Software',
+    tagline: 'GST invoicing made simple',
+    description: 'Fast GST-compliant billing with inventory, e-way bills, multi-branch support, and one-tap reports — from quick counter sales to full accounting.',
+    features: ['GST Invoicing', 'Inventory', 'E-way Bills', 'Multi-branch'],
+    platforms: ['Web', 'Desktop', 'Android'],
   },
   {
-    category: 'Industrial Applications',
-    icon: Factory,
+    category: 'AI Tools',
+    icon: PieChart,
+    color: '#EC4899',
+    gradient: 'linear-gradient(135deg, #EC4899, #7C3AED)',
+    status: 'Beta',
+    title: 'PortfolioIQ — Portfolio Analyser & Advisor',
+    tagline: 'Understand and grow your business portfolio',
+    description: 'AI that analyses your business portfolio — revenue mix, risk exposure, and diversification — then recommends data-backed moves with scenario modeling.',
+    features: ['Risk Analysis', 'Diversification', 'Scenario Modeling', 'AI Recommendations'],
+    platforms: ['Web'],
+  },
+  {
+    category: 'AI Tools',
+    icon: TrendingUp,
     color: '#F59E0B',
     gradient: 'linear-gradient(135deg, #F59E0B, #EC4899)',
-    status: 'Live',
-    title: 'Manufacturing Execution System',
-    description: 'Real-time production tracking and quality control with IoT integration, predictive maintenance, and operational intelligence dashboards.',
-    technologies: ['Python', 'PostgreSQL', 'React', 'IoT Sensors', 'MQTT'],
-    highlights: ['Live Monitoring', 'Quality Control', 'Predictive AI', 'SCADA Integration'],
+    status: 'Beta',
+    title: 'WealthWise — AI Financial Advisor',
+    tagline: 'Your personal robo-advisor',
+    description: 'AI financial advisor for goal planning, investment guidance, and tax optimization — personalized advice that adapts as your finances change.',
+    features: ['Goal Planning', 'Investment Advice', 'Tax Optimization', 'Robo-advisory'],
+    platforms: ['Web', 'iOS', 'Android'],
   },
   {
-    category: 'Cloud & DevOps',
-    icon: Cloud,
+    category: 'AI Tools',
+    icon: Bot,
+    color: '#8B5CF6',
+    gradient: 'linear-gradient(135deg, #8B5CF6, #0066FF)',
+    status: 'Beta',
+    title: 'BizPilot — AI Business Support Agent',
+    tagline: 'An AI teammate for your operations',
+    description: 'Autonomous AI agent that handles support chats, drafts emails, generates reports, and automates repetitive tasks across your tools — 24/7, with human approvals.',
+    features: ['Task Automation', 'Chat & Email', 'Report Generation', '24/7 Agent'],
+    platforms: ['Web', 'API', 'WhatsApp'],
+  },
+  {
+    category: 'Business Software',
+    icon: Users,
     color: '#3B82F6',
     gradient: 'linear-gradient(135deg, #3B82F6, #7C3AED)',
-    status: 'Completed',
-    title: 'Cloud Migration & DevOps',
-    description: 'AWS/Azure cloud migration with Kubernetes orchestration, achieving 99.99% uptime and a 30% infrastructure cost reduction.',
-    technologies: ['AWS', 'Kubernetes', 'Docker', 'Terraform', 'CI/CD'],
-    highlights: ['99.99% Uptime', 'Auto-scaling', 'Cost Optimization', 'Zero Downtime'],
+    status: 'Available',
+    title: 'PaySlip Pro — HR & Payroll Suite',
+    tagline: 'Hire, pay, and stay compliant',
+    description: 'Manage attendance, payroll, leaves, and statutory compliance (PF/ESI/TDS) with employee self-service — payroll that runs itself.',
+    features: ['Attendance', 'Auto Payroll', 'Compliance', 'Self-service'],
+    platforms: ['Web', 'Android', 'iOS'],
   },
   {
-    category: 'Cybersecurity',
-    icon: Shield,
+    category: 'Business Software',
+    icon: Package,
+    color: '#F97316',
+    gradient: 'linear-gradient(135deg, #F97316, #EC4899)',
+    status: 'Available',
+    title: 'StockSense — Inventory & POS',
+    tagline: 'Smart retail, zero stockouts',
+    description: 'Barcode POS with real-time stock alerts, multi-store sync, supplier management, and sales analytics — built for shops, warehouses, and chains.',
+    features: ['Barcode POS', 'Stock Alerts', 'Multi-store', 'Sales Analytics'],
+    platforms: ['Web', 'Desktop', 'Android'],
+  },
+  {
+    category: 'FinTech',
+    icon: Landmark,
+    color: '#0EA5E9',
+    gradient: 'linear-gradient(135deg, #0EA5E9, #7C3AED)',
+    status: 'Coming Soon',
+    title: 'LendFlow — Loan & Lending Manager',
+    tagline: 'Lend smarter, recover faster',
+    description: 'End-to-end lending platform with digital loan origination, KYC, EMI tracking, and automated collections — for NBFCs, micro-lenders, and finance firms.',
+    features: ['Loan Origination', 'Digital KYC', 'EMI Tracking', 'Collections'],
+    platforms: ['Web', 'Android'],
+  },
+  {
+    category: 'AI Tools',
+    icon: Target,
+    color: '#22C55E',
+    gradient: 'linear-gradient(135deg, #22C55E, #0066FF)',
+    status: 'Available',
+    title: 'LeadHawk — AI Lead Gen & CRM',
+    tagline: 'Never miss a lead again',
+    description: 'AI-powered CRM that scores leads, auto-follows up over WhatsApp and email, and keeps your pipeline moving — turning conversations into customers.',
+    features: ['Lead Scoring', 'Auto Follow-up', 'Pipeline View', 'WhatsApp + Email'],
+    platforms: ['Web', 'Android', 'iOS'],
+  },
+  {
+    category: 'AI Tools',
+    icon: BarChart3,
     color: '#EF4444',
     gradient: 'linear-gradient(135deg, #EF4444, #7C3AED)',
-    status: 'Ongoing',
-    title: 'Security Audit & VAPT',
-    description: 'End-to-end vulnerability assessment and penetration testing with continuous monitoring, threat detection, and compliance-ready security reporting.',
-    technologies: ['VAPT', 'OWASP', 'SIEM', 'Cloud Security', 'Pen Testing'],
-    highlights: ['Threat Detection', 'OWASP Top 10', 'Compliance', '24/7 Monitoring'],
+    status: 'Beta',
+    title: 'InsightDeck — AI Analytics & BI',
+    tagline: 'Ask your data anything',
+    description: 'Self-serve business intelligence with live dashboards, natural-language queries, forecasts, and smart alerts — insights without a data team.',
+    features: ['Live Dashboards', 'NL Queries', 'Forecasting', 'Smart Alerts'],
+    platforms: ['Web'],
   },
 ];
 
 const stats = [
-  { value: 150, suffix: '+', label: 'Projects Completed', icon: Briefcase, color: '#0066FF' },
-  { value: 50, suffix: '+', label: 'Happy Clients', icon: Users, color: '#7C3AED' },
-  { value: 95, suffix: '%', label: 'Client Retention', icon: Heart, color: '#EC4899' },
-  { value: '24/7', suffix: '', label: 'Support Available', icon: Headphones, color: '#10B981' },
+  { value: 12, suffix: '+', label: 'Products Launched', icon: Layers, color: '#0066FF' },
+  { value: 25, suffix: 'K+', label: 'Active Users', icon: Users, color: '#7C3AED' },
+  { value: 15, suffix: '+', label: 'Industries Served', icon: Briefcase, color: '#EC4899' },
+  { value: '99.9', suffix: '%', label: 'Platform Uptime', icon: ShieldCheck, color: '#10B981' },
 ];
 
-const categories = ['All', ...Array.from(new Set(projects.map(p => p.category)))];
+const categories = ['All', ...Array.from(new Set(products.map(p => p.category)))];
 
 /* ═══════════════════════════════════════════════
-   PORTFOLIO PAGE
+   PRODUCTS PAGE
    ═══════════════════════════════════════════════ */
-export default function Portfolio() {
+export default function Products() {
   const [active, setActive] = useState('All');
   const { scrollYProgress } = useScroll();
   const backgroundY = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0.8]);
 
-  const filtered = active === 'All' ? projects : projects.filter(p => p.category === active);
+  const filtered = active === 'All' ? products : products.filter(p => p.category === active);
 
-  const portfolioJsonLd = {
+  const productsJsonLd = {
     '@context': 'https://schema.org',
     '@graph': [
       {
         '@type': 'WebPage',
-        '@id': 'https://elitecrows.in/portfolio#webpage',
-        url: 'https://elitecrows.in/portfolio',
-        name: 'Portfolio | EliteCrows Infotech – Project Case Studies & Work',
-        description: 'Browse EliteCrows Infotech portfolio: AI agents, RAG assistants, mobile apps, e-commerce platforms, SaaS CRM/ERP, WhatsApp automation, BI dashboards, and cloud solutions. 150+ projects delivered.',
+        '@id': 'https://elitecrows.in/products#webpage',
+        url: 'https://elitecrows.in/products',
+        name: 'Products | EliteCrows Infotech – Finance, Chit Fund, Real Estate, Billing & AI Apps',
+        description: 'Explore EliteCrows Infotech products: finance app, chit fund app, real estate app, GST billing software, AI portfolio analyser, AI financial advisor, and AI business support agent.',
         isPartOf: { '@id': 'https://elitecrows.in/#website' },
         breadcrumb: {
           '@type': 'BreadcrumbList',
           itemListElement: [
             { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://elitecrows.in/' },
-            { '@type': 'ListItem', position: 2, name: 'Portfolio', item: 'https://elitecrows.in/portfolio' },
+            { '@type': 'ListItem', position: 2, name: 'Products', item: 'https://elitecrows.in/products' },
           ],
         },
         inLanguage: 'en-IN',
       },
       {
         '@type': 'ItemList',
-        name: 'EliteCrows Infotech Project Portfolio',
-        description: 'A curated selection of digital solutions delivered across AI, mobile, e-commerce, SaaS, healthcare, data analytics, industrial, cybersecurity, and cloud industries.',
-        numberOfItems: projects.length,
-        itemListElement: projects.map((proj, idx) => ({
+        name: 'EliteCrows Infotech Product Suite',
+        description: 'A suite of FinTech, real estate, billing, business, and AI products built by EliteCrows Infotech.',
+        numberOfItems: products.length,
+        itemListElement: products.map((p, idx) => ({
           '@type': 'ListItem',
           position: idx + 1,
           item: {
-            '@type': 'CreativeWork',
-            name: proj.title,
-            description: proj.description,
-            keywords: proj.technologies.join(', '),
-            creator: { '@id': 'https://elitecrows.in/#organization' },
-            genre: proj.category,
-            creativeWorkStatus: proj.status,
+            '@type': 'SoftwareApplication',
+            name: p.title,
+            description: p.description,
+            applicationCategory: p.category,
+            operatingSystem: p.platforms.join(', '),
+            featureList: p.features.join(', '),
+            publisher: { '@id': 'https://elitecrows.in/#organization' },
+            offers: { '@type': 'Offer', availability: p.status === 'Coming Soon' ? 'https://schema.org/PreOrder' : 'https://schema.org/InStock' },
           },
         })),
       },
@@ -423,34 +435,34 @@ export default function Portfolio() {
     <>
       <Helmet>
         <html lang="en" dir="ltr" />
-        <title>Portfolio | EliteCrows Infotech – AI, Mobile, SaaS & Web Project Case Studies</title>
-        <meta name="description" content="Explore EliteCrows Infotech's portfolio: AI agents & RAG assistants, cross-platform mobile apps, e-commerce, SaaS CRM/ERP, WhatsApp automation, BI dashboards, industrial IoT, cybersecurity, and cloud DevOps. 150+ projects delivered." />
-        <meta name="keywords" content="EliteCrows portfolio, agentic AI development India, RAG chatbot development, generative AI solutions, React Native app development, Flutter app development Tamil Nadu, custom CRM ERP SaaS, WhatsApp business API automation, enterprise web development, e-commerce development, hospital management software, business intelligence dashboard, manufacturing MES IoT, cybersecurity VAPT, cloud migration DevOps, SEO digital marketing case studies, software development company Tiruppur" />
+        <title>Products | EliteCrows Infotech – Finance, Chit Fund, Real Estate, Billing & AI Apps</title>
+        <meta name="description" content="Explore EliteCrows Infotech products: finance app, chit fund app, real estate app, GST billing software, AI business portfolio analyser & advisor, AI financial advisor, AI business support agent, HR & payroll, POS, and AI analytics." />
+        <meta name="keywords" content="EliteCrows products, finance app India, chit fund management software, chit fund app, real estate app, property management software, GST billing software, invoicing software India, business portfolio analyser, AI financial advisor, robo advisor app, AI business support agent, HR payroll software, inventory POS software, loan lending management software, AI CRM lead generation, AI analytics BI tool, software products company Tiruppur Tamil Nadu" />
         <meta name="author" content="EliteCrows Infotech" />
         <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-        <link rel="canonical" href="https://elitecrows.in/portfolio" />
+        <link rel="canonical" href="https://elitecrows.in/products" />
         <meta property="og:site_name" content="EliteCrows Infotech" />
-        <meta property="og:title" content="Portfolio – EliteCrows Infotech | AI, Mobile, SaaS & Web Projects" />
-        <meta property="og:description" content="A curated selection of digital solutions across AI agents, mobile apps, SaaS, e-commerce, analytics, industrial, and cloud. 150+ projects completed." />
+        <meta property="og:title" content="Products – EliteCrows Infotech | FinTech, Real Estate, Billing & AI Apps" />
+        <meta property="og:description" content="Finance app, chit fund app, real estate app, GST billing, AI portfolio analyser, AI financial advisor, and AI business support agent — products built to power your business." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://elitecrows.in/portfolio" />
+        <meta property="og:url" content="https://elitecrows.in/products" />
         <meta property="og:image" content="https://elitecrows.in/og-image.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content="EliteCrows Infotech project portfolio showcase" />
+        <meta property="og:image:alt" content="EliteCrows Infotech product suite" />
         <meta property="og:locale" content="en_IN" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@elitecrows" />
-        <meta name="twitter:title" content="EliteCrows Infotech Portfolio – AI, Mobile, SaaS & Web Projects" />
-        <meta name="twitter:description" content="150+ delivered projects: AI agents, mobile apps, SaaS, e-commerce, analytics, and more. Explore our work." />
+        <meta name="twitter:title" content="EliteCrows Infotech Products – FinTech, Real Estate, Billing & AI Apps" />
+        <meta name="twitter:description" content="Finance, chit fund, real estate, billing, and AI products to run and grow your business. Explore the suite." />
         <meta name="twitter:image" content="https://elitecrows.in/og-image.jpg" />
-        <meta name="twitter:image:alt" content="EliteCrows Infotech portfolio" />
-        <script type="application/ld+json">{JSON.stringify(portfolioJsonLd)}</script>
+        <meta name="twitter:image:alt" content="EliteCrows Infotech products" />
+        <script type="application/ld+json">{JSON.stringify(productsJsonLd)}</script>
       </Helmet>
 
       <main
         id="main-content"
-        aria-label="EliteCrows Infotech portfolio page"
+        aria-label="EliteCrows Infotech products page"
         style={{
           background: '#FFFFFF',
           color: COLORS.text,
@@ -461,7 +473,7 @@ export default function Portfolio() {
       >
         {/* ══════════════════════ HERO ══════════════════════ */}
         <motion.section
-          className="portfolio-hero"
+          className="products-hero"
           style={{
             minHeight: '90vh',
             display: 'flex',
@@ -526,7 +538,7 @@ export default function Portfolio() {
                   letterSpacing: '0.06em',
                   textTransform: 'uppercase',
                 }}>
-                  AI · Mobile · SaaS · Cloud
+                  FinTech · Real Estate · AI · Business
                 </span>
               </motion.div>
 
@@ -543,13 +555,13 @@ export default function Portfolio() {
                   color: COLORS.text,
                 }}
               >
-                Projects That{' '}
+                Products That{' '}
                 <span style={{
                   background: 'linear-gradient(135deg, #0066FF 0%, #7C3AED 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                 }}>
-                  Define Excellence
+                  Power Your Business
                 </span>
               </motion.h1>
 
@@ -562,12 +574,12 @@ export default function Portfolio() {
                   lineHeight: 1.6,
                   color: COLORS.muted,
                   marginBottom: '0',
-                  maxWidth: '560px',
+                  maxWidth: '600px',
                   marginLeft: 'auto',
                   marginRight: 'auto',
                 }}
               >
-                A curated selection of digital solutions we've shipped and are actively building — from agentic AI and RAG assistants to mobile apps and enterprise cloud.
+                Ready-to-use software products built in-house — from finance, chit fund, and real estate apps to AI advisors and business agents that work for you.
               </motion.p>
             </div>
           </div>
@@ -679,9 +691,9 @@ export default function Portfolio() {
           </div>
         </section>
 
-        {/* ══════════════════════ PROJECT GRID ══════════════════════ */}
+        {/* ══════════════════════ PRODUCT GRID ══════════════════════ */}
         <section
-          className="projects-section"
+          className="products-section"
           style={{
             padding: '40px 0 100px',
             background: 'linear-gradient(180deg, #FFFFFF 0%, #F8F9FC 100%)',
@@ -692,20 +704,20 @@ export default function Portfolio() {
           <div className="container" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}>
             <motion.div
               layout
-              className="projects-grid"
+              className="products-grid"
               style={{
                 display: 'grid',
                 gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))',
                 gap: '24px',
               }}
             >
-              {filtered.map((proj, i) => {
-                const Icon = proj.icon;
+              {filtered.map((prod, i) => {
+                const Icon = prod.icon;
                 return (
-                  <Reveal key={proj.title} delay={i * 0.06} direction="up">
+                  <Reveal key={prod.title} delay={i * 0.06} direction="up">
                     <motion.div
                       whileHover={{ y: -8, boxShadow: '0 24px 48px rgba(0,0,0,0.12)' }}
-                      className="project-card"
+                      className="product-card"
                       style={{
                         padding: '32px 28px',
                         border: '1px solid rgba(0,0,0,0.06)',
@@ -728,11 +740,11 @@ export default function Portfolio() {
                         left: 0,
                         right: 0,
                         height: '3px',
-                        background: proj.gradient,
+                        background: prod.gradient,
                         borderRadius: '24px 24px 0 0',
                       }} />
 
-                      {/* Header with icon and category */}
+                      {/* Header with icon, category and status */}
                       <div style={{
                         display: 'flex',
                         alignItems: 'flex-start',
@@ -747,7 +759,7 @@ export default function Portfolio() {
                             width: '52px',
                             height: '52px',
                             borderRadius: '16px',
-                            background: proj.gradient,
+                            background: prod.gradient,
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
@@ -768,36 +780,45 @@ export default function Portfolio() {
                             textTransform: 'uppercase',
                             border: '1px solid rgba(0,102,255,0.1)',
                           }}>
-                            {proj.category}
+                            {prod.category}
                           </span>
-                          <StatusBadge status={proj.status} />
+                          <StatusBadge status={prod.status} />
                         </div>
                       </div>
 
-                      {/* Title and description */}
+                      {/* Title, tagline and description */}
                       <div>
                         <h3 style={{
                           fontSize: 'clamp(18px, 3vw, 22px)',
                           fontWeight: 700,
                           color: COLORS.text,
-                          marginBottom: '8px',
+                          marginBottom: '4px',
                           letterSpacing: '-0.02em',
                           lineHeight: 1.3,
                         }}>
-                          {proj.title}
+                          {prod.title}
                         </h3>
+                        <div style={{
+                          fontSize: '12px',
+                          fontWeight: 700,
+                          color: COLORS.accent,
+                          marginBottom: '10px',
+                          letterSpacing: '0.01em',
+                        }}>
+                          {prod.tagline}
+                        </div>
                         <p style={{
                           fontSize: '14px',
                           color: COLORS.muted,
                           lineHeight: 1.65,
                         }}>
-                          {proj.description}
+                          {prod.description}
                         </p>
                       </div>
 
-                      {/* Highlights */}
+                      {/* Key features */}
                       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
-                        {proj.highlights.map((h, j) => (
+                        {prod.features.map((f, j) => (
                           <span key={j} style={{
                             padding: '5px 12px',
                             borderRadius: '8px',
@@ -807,12 +828,12 @@ export default function Portfolio() {
                             color: COLORS.text,
                             letterSpacing: '0.01em',
                           }}>
-                            {h}
+                            {f}
                           </span>
                         ))}
                       </div>
 
-                      {/* Tech stack */}
+                      {/* Platforms */}
                       <div style={{
                         marginTop: 'auto',
                         paddingTop: '16px',
@@ -826,10 +847,10 @@ export default function Portfolio() {
                           textTransform: 'uppercase',
                           letterSpacing: '0.08em',
                         }}>
-                          Tech Stack
+                          Available On
                         </div>
                         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
-                          {proj.technologies.map((t, j) => (
+                          {prod.platforms.map((pl, j) => (
                             <span key={j} style={{
                               padding: '5px 12px',
                               borderRadius: '8px',
@@ -840,13 +861,13 @@ export default function Portfolio() {
                               background: 'rgba(0,102,255,0.04)',
                               letterSpacing: '0.01em',
                             }}>
-                              {t}
+                              {pl}
                             </span>
                           ))}
                         </div>
                       </div>
 
-                      {/* View Project Link */}
+                      {/* CTA Link */}
                       <div style={{ paddingTop: '4px' }}>
                         <Link
                           to="/contact"
@@ -861,7 +882,7 @@ export default function Portfolio() {
                             minHeight: '44px',
                           }}
                         >
-                          Discuss This Project <ArrowRight size={14} />
+                          {prod.status === 'Coming Soon' ? 'Join the Waitlist' : 'Request a Demo'} <ArrowRight size={14} />
                         </Link>
                       </div>
                     </motion.div>
@@ -946,13 +967,13 @@ export default function Portfolio() {
                   marginBottom: '20px',
                   color: COLORS.text,
                 }}>
-                  Ready to be Our Next{' '}
+                  Need a Product{' '}
                   <span style={{
                     background: 'linear-gradient(135deg, #0066FF, #7C3AED)',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
                   }}>
-                    Success Story?
+                    Tailored to You?
                   </span>
                 </h2>
 
@@ -961,11 +982,11 @@ export default function Portfolio() {
                   fontSize: '18px',
                   lineHeight: 1.65,
                   marginBottom: '40px',
-                  maxWidth: '500px',
+                  maxWidth: '520px',
                   marginLeft: 'auto',
                   marginRight: 'auto',
                 }}>
-                  Let us build something remarkable together. Join 50+ forward-thinking companies that trust EliteCrows.
+                  Try any product with a free demo, or let us customize one for your workflow. Tell us what you need and we'll make it happen.
                 </p>
 
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
@@ -986,7 +1007,7 @@ export default function Portfolio() {
                       boxShadow: '0 8px 24px rgba(0,102,255,0.2)',
                     }}
                   >
-                    Start a Project <ExternalLink size={18} />
+                    Book a Free Demo <ExternalLink size={18} />
                   </Link>
                 </motion.div>
               </motion.div>
@@ -1011,10 +1032,10 @@ export default function Portfolio() {
               max-width: 1600px;
             }
           }
-          
+
           /* Mobile Responsive */
           @media (max-width: 767px) {
-            .portfolio-hero {
+            .products-hero {
               min-height: 80vh !important;
               padding-top: 80px !important;
               padding-bottom: 60px !important;
@@ -1026,10 +1047,10 @@ export default function Portfolio() {
               grid-template-columns: repeat(2, 1fr) !important;
               gap: 16px !important;
             }
-            .projects-section {
+            .products-section {
               padding: 32px 0 80px !important;
             }
-            .projects-grid {
+            .products-grid {
               grid-template-columns: 1fr !important;
               gap: 16px !important;
             }
@@ -1037,33 +1058,33 @@ export default function Portfolio() {
               padding: 80px 0 !important;
             }
           }
-          
+
           @media (min-width: 768px) and (max-width: 1023px) {
-            .projects-grid {
+            .products-grid {
               grid-template-columns: repeat(2, 1fr) !important;
             }
             .cta-section {
               padding: 100px 0 !important;
             }
           }
-          
+
           /* Hover effects */
-          .project-card:hover {
+          .product-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 24px 48px rgba(0,0,0,0.12);
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
           }
-          
+
           /* Touch-friendly */
           button, a, [role="button"] {
             touch-action: manipulation;
           }
-          
+
           img {
             max-width: 100%;
             height: auto;
           }
-          
+
           * {
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;

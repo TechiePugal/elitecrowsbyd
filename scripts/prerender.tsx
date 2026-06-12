@@ -40,6 +40,8 @@ const homeBody = `
     <nav aria-label="Main navigation">
       <a href="/">EliteCrows</a>
       <a href="/services">Services</a>
+      <a href="/products">Products</a>
+      <a href="/learnhub">LearnHub</a>
       <a href="/portfolio">Work</a>
       <a href="/about">About</a>
       <a href="/coimbatore">Coimbatore</a>
@@ -99,6 +101,8 @@ const homeBody = `
     <footer>
       <a href="/about">About</a>
       <a href="/services">Services</a>
+      <a href="/products">Products</a>
+      <a href="/learnhub">LearnHub</a>
       <a href="/portfolio">Portfolio</a>
       <a href="/careers">Careers</a>
       <a href="/service-areas">Service Areas</a>
@@ -155,6 +159,45 @@ const routePages: RoutePage[] = [
         <a href="/tiruppur">Tiruppur software development</a>
         <a href="/erode">Erode cloud consulting</a>
         <a href="/salem">Salem cybersecurity services</a>
+      </main>
+    `,
+  },
+  {
+    path: '/products',
+    title: 'Products | EliteCrows Infotech - Business Apps, AI Tools & Automation',
+    description: 'Explore EliteCrows Infotech products including finance apps, chit fund software, real estate apps, GST billing, AI portfolio analysis, and AI business support tools.',
+    canonical: 'https://elitecrows.in/products',
+    bodyHtml: `
+      <main id="main-content">
+        <h1>Products Built to Power Your Business</h1>
+        <p>Explore EliteCrows Infotech business products for finance, chit funds, real estate, GST billing, HR, POS, analytics, and AI-powered support.</p>
+        <h2>Finance and chit fund applications</h2>
+        <h2>Real estate and property management software</h2>
+        <h2>GST billing, inventory, and POS tools</h2>
+        <h2>AI portfolio analyser and financial advisor</h2>
+        <a href="/services">Explore services</a>
+        <a href="/portfolio">View work</a>
+        <a href="/contact">Discuss a product</a>
+      </main>
+    `,
+  },
+  {
+    path: '/learnhub',
+    title: 'LearnHub | Internships, Placement Training & IT Courses - EliteCrows',
+    description: 'EliteCrows LearnHub offers student internships, placement training, and hands-on IT courses in web development, AI, cloud, digital marketing, cybersecurity, and more.',
+    canonical: 'https://elitecrows.in/learnhub',
+    bodyHtml: `
+      <main id="main-content">
+        <h1>LearnHub for Internships, Placement Training and IT Courses</h1>
+        <p>EliteCrows LearnHub helps students become job-ready through real project internships, placement training, and practical technology courses.</p>
+        <h2>Internship Program</h2>
+        <p>Flexible internships from 7 days to 3 months with certificates, mentor support, and real project exposure.</p>
+        <h2>Placement Training</h2>
+        <p>Aptitude, coding rounds, mock interviews, resume building, and direct access to placement drives.</p>
+        <h2>Industry Courses</h2>
+        <p>Hands-on training in full-stack web development, AI, data science, cloud, digital marketing, cybersecurity, Flutter, Java, UI/UX, and DSA.</p>
+        <a href="/careers">Apply for internship</a>
+        <a href="/contact">Talk to LearnHub</a>
       </main>
     `,
   },

@@ -250,7 +250,7 @@ export default function Footer() {
                 Company
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                {[['Home', '/'], ['About Us', '/about'], ['Services', '/services'], ['Portfolio', '/portfolio'], ['Careers', '/careers'], ['Contact', '/contact']].map(([label, path]) => (
+                {[['Home', '/'], ['About Us', '/about'], ['Services', '/services'], ['Products', '/products'], ['LearnHub', '/learnhub'], ['Portfolio', '/portfolio'], ['Careers', '/careers'], ['Contact', '/contact']].map(([label, path]) => (
                   <Link key={path} to={path} style={{
                     display: 'flex', alignItems: 'center', gap: '4px',
                     fontSize: '13px', color: '#86868B', textDecoration: 'none',

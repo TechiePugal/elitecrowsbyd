@@ -302,8 +302,33 @@ export default function Contact() {
                 </div>
 
                 <div style={{ marginTop: '32px', background: '#F9F9FB', borderRadius: '24px', padding: 'clamp(16px, 4vw, 20px)', textAlign: 'center', border: '1px solid #E5E5E7' }}>
-                  <MapPin size={20} color="#0071E3" style={{ marginBottom: '8px' }} />
-                  <p style={{ fontSize: 'clamp(12px, 2.5vw, 13px)', color: '#6B7280' }}>Serving Tamil Nadu & remote clients worldwide</p>
+                                    <div
+                    style={{
+                      position: 'relative',
+                      width: '100%',
+                      aspectRatio: '4 / 3',
+                      minHeight: '240px',
+                      overflow: 'hidden',
+                      borderRadius: '18px',
+                      border: '1px solid #E5E5E7',
+                      background: '#E5E7EB',
+                    }}
+                  >
+                    <iframe
+                      title="EliteCrows InfoTech location map"
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3910.2937430275847!2d77.40299637452564!3d11.458710946239508!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba93d62ff07a7df%3A0xfab3331e9ce37a35!2sEliteCrows%20InfoTech!5e0!3m2!1sen!2sin!4v1781283152949!5m2!1sen!2sin"
+                      loading="lazy"
+                      allowFullScreen
+                      referrerPolicy="no-referrer-when-downgrade"
+                      style={{
+                        position: 'absolute',
+                        inset: 0,
+                        width: '100%',
+                        height: '100%',
+                        border: 0,
+                      }}
+                    />
+                  </div>
                 </div>
               </motion.div>
             </div>

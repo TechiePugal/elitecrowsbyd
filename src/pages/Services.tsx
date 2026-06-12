@@ -4,6 +4,12 @@ import { motion, useInView } from 'framer-motion'
 import { Helmet } from 'react-helmet-async'
 import { Code, Search, Cloud, Bot, Factory, ShieldCheck, Check, ArrowRight, Sparkles, Rocket, Zap, Globe } from 'lucide-react'
 
+const COLORS = {
+  primary: '#0071E3',
+  text: '#1D1D1F',
+  muted: '#6B7280',
+}
+
 function Reveal({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-60px' })
