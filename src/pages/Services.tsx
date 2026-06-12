@@ -117,51 +117,83 @@ export default function Services() {
 
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'ItemList',
-    name: 'EliteCrows Technology Services',
-    description: 'Comprehensive IT and software development services including web development, SEO, cloud solutions, AI chatbots, industrial applications, and cybersecurity.',
-    numberOfItems: services.length,
-    itemListElement: services.map((svc, idx) => ({
-      '@type': 'Service',
-      position: idx + 1,
-      name: svc.title,
-      description: svc.desc,
-      provider: {
-        '@type': 'Organization',
-        name: 'EliteCrows Infotech',
-        url: 'https://elitecrows.com'
-      }
-    })),
-    url: 'https://elitecrows.com/services'
+    '@graph': [
+      {
+        '@type': 'WebPage',
+        '@id': 'https://elitecrows.in/services#webpage',
+        url: 'https://elitecrows.in/services',
+        name: 'Services | EliteCrows Infotech – Web Dev, SEO, AI, Cloud & Cybersecurity',
+        description: 'Comprehensive IT and software development services including web development, SEO, cloud solutions, AI chatbots, industrial applications, and enterprise cybersecurity.',
+        isPartOf: { '@id': 'https://elitecrows.in/#website' },
+        breadcrumb: {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://elitecrows.in/' },
+            { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://elitecrows.in/services' },
+          ],
+        },
+        inLanguage: 'en-IN',
+      },
+      {
+        '@type': 'ItemList',
+        '@id': 'https://elitecrows.in/services#servicelist',
+        name: 'EliteCrows Infotech Technology Services',
+        description: 'Comprehensive IT and software development services including web development, SEO, cloud solutions, AI chatbots, industrial applications, and cybersecurity.',
+        numberOfItems: services.length,
+        itemListElement: services.map((svc, idx) => ({
+          '@type': 'ListItem',
+          position: idx + 1,
+          item: {
+            '@type': 'Service',
+            name: svc.title,
+            description: svc.desc,
+            provider: {
+              '@type': 'Organization',
+              '@id': 'https://elitecrows.in/#organization',
+              name: 'EliteCrows Infotech',
+              url: 'https://elitecrows.in',
+            },
+            areaServed: ['IN', 'US', 'GB', 'AE', 'SG'],
+            serviceType: svc.title,
+          },
+        })),
+        url: 'https://elitecrows.in/services',
+      },
+    ],
   }
 
   return (
     <>
       <Helmet>
-        <html lang="en" />
-        <title>Services | EliteCrows – Web Dev, SEO, AI, Cloud & Cybersecurity</title>
-        <meta name="description" content="Explore EliteCrows' full range of technology services: custom web development, SEO, cloud solutions, AI chatbots, industrial applications, and enterprise cybersecurity. Free consultation →" />
-        <meta name="keywords" content="custom software development, SEO services, cloud consulting, AI chatbot development, industrial automation software, cybersecurity services, web development company" />
+        <html lang="en" dir="ltr" />
+        <title>Services | EliteCrows Infotech – Web Dev, SEO, AI, Cloud & Cybersecurity India</title>
+        <meta name="description" content="EliteCrows Infotech: web dev, SEO, cloud, AI chatbots, industrial automation, and enterprise cybersecurity in Tamil Nadu. Free consultation." />
+        <meta name="keywords" content="custom software development India, SEO services Tamil Nadu, cloud consulting AWS Azure, AI chatbot development, industrial automation software, cybersecurity services India, web development company Coimbatore" />
         <meta name="author" content="EliteCrows Infotech" />
-        <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://elitecrows.com/services" />
-        
-        <meta property="og:title" content="Services – EliteCrows | Custom Software, AI, Cloud & More" />
-        <meta property="og:description" content="End-to-end technology solutions: web & software development, SEO, cloud customization, AI chatbots, industrial apps, and cybersecurity. Get a free consultation." />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+        <link rel="canonical" href="https://elitecrows.in/services" />
+        <meta property="og:site_name" content="EliteCrows Infotech" />
+        <meta property="og:title" content="Services – EliteCrows Infotech | Custom Software, AI, Cloud & More" />
+        <meta property="og:description" content="End-to-end technology solutions: web & software development, SEO, cloud customization, AI chatbots, industrial apps, and cybersecurity. Free consultation." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://elitecrows.com/services" />
-        <meta property="og:image" content="https://elitecrows.com/services-og.jpg" />
-        
+        <meta property="og:url" content="https://elitecrows.in/services" />
+        <meta property="og:image" content="https://elitecrows.in/og-image.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="EliteCrows Infotech technology services overview" />
+        <meta property="og:locale" content="en_IN" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="EliteCrows Services – Technology Solutions for Growth" />
-        <meta name="twitter:description" content="From web development to AI and cybersecurity – we deliver scalable, secure digital products." />
-        
+        <meta name="twitter:site" content="@elitecrows" />
+        <meta name="twitter:title" content="EliteCrows Infotech Services – Technology Solutions for Growth" />
+        <meta name="twitter:description" content="From web development to AI and cybersecurity – EliteCrows Infotech delivers scalable, secure digital products for enterprises." />
+        <meta name="twitter:image" content="https://elitecrows.in/og-image.jpg" />
+        <meta name="twitter:image:alt" content="EliteCrows Infotech Services" />
         <script type="application/ld+json">
           {JSON.stringify(jsonLd)}
         </script>
       </Helmet>
 
-      <div style={{ background: '#FFFFFF', minHeight: '100vh', overflowX: 'hidden' }}>
+      <main id="main-content" style={{ background: '#FFFFFF', minHeight: '100vh', overflowX: 'hidden' }}>
         {/* ─── PREMIUM HERO BANNER (Fully Responsive) ─── */}
         <section className="services-hero"
           style={{
@@ -504,7 +536,7 @@ export default function Services() {
             touch-action: manipulation;
           }
         `}</style>
-      </div>
+      </main>
     </>
   )
 }

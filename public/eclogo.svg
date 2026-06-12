@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="EliteCrows Infotech logo">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#0071E3"/>
+      <stop offset="100%" stop-color="#00C6FF"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="96" fill="#0F172A"/>
+  <circle cx="256" cy="256" r="180" fill="url(#g)" opacity="0.18"/>
+  <path d="M164 194h184a22 22 0 0 1 22 22v80a22 22 0 0 1-22 22H164a22 22 0 0 1-22-22v-80a22 22 0 0 1 22-22z" fill="url(#g)"/>
+  <path d="M206 236h120" stroke="#FFFFFF" stroke-width="18" stroke-linecap="round"/>
+  <path d="M206 276h92" stroke="#FFFFFF" stroke-width="18" stroke-linecap="round" opacity="0.95"/>
+  <path d="M206 316h64" stroke="#FFFFFF" stroke-width="18" stroke-linecap="round" opacity="0.85"/>
+  <circle cx="256" cy="176" r="18" fill="#F9CD05"/>
+</svg>

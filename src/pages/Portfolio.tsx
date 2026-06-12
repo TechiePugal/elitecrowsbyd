@@ -1,7 +1,8 @@
 import { useRef, useState } from 'react'
+import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom'
 import { motion, useInView } from 'framer-motion'
-import { Code, Search, Bot, Factory, Globe, ArrowRight, ExternalLink } from 'lucide-react'
+import { Code, Search, Bot, Factory, Globe, ArrowRight } from 'lucide-react'
 
 function Reveal({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
   const ref = useRef(null)
@@ -77,8 +78,75 @@ export default function Portfolio() {
 
   const filtered = active === 'All' ? projects : projects.filter(p => p.category === active)
 
+  const portfolioJsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'WebPage',
+        '@id': 'https://elitecrows.in/portfolio#webpage',
+        url: 'https://elitecrows.in/portfolio',
+        name: 'Portfolio | EliteCrows Infotech – Project Case Studies & Work',
+        description: 'Browse EliteCrows Infotech portfolio: e-commerce platforms, hospital management systems, AI chatbots, manufacturing execution systems, and more. 100+ projects delivered.',
+        isPartOf: { '@id': 'https://elitecrows.in/#website' },
+        breadcrumb: {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://elitecrows.in/' },
+            { '@type': 'ListItem', position: 2, name: 'Portfolio', item: 'https://elitecrows.in/portfolio' },
+          ],
+        },
+        inLanguage: 'en-IN',
+      },
+      {
+        '@type': 'ItemList',
+        name: 'EliteCrows Infotech Project Portfolio',
+        description: 'A curated selection of digital solutions delivered across e-commerce, healthcare, AI, SEO, industrial, and hospitality industries.',
+        numberOfItems: projects.length,
+        itemListElement: projects.map((proj, idx) => ({
+          '@type': 'ListItem',
+          position: idx + 1,
+          item: {
+            '@type': 'CreativeWork',
+            name: proj.title,
+            description: proj.description,
+            keywords: proj.technologies.join(', '),
+            creator: { '@id': 'https://elitecrows.in/#organization' },
+            genre: proj.category,
+          },
+        })),
+      },
+    ],
+  }
+
   return (
-    <div style={{ background: '#FFFFFF', minHeight: '100vh', overflowX: 'hidden' }}>
+    <>
+      <Helmet>
+        <html lang="en" dir="ltr" />
+        <title>Portfolio | EliteCrows Infotech – Project Case Studies & Work Showcase</title>
+        <meta name="description" content="Browse EliteCrows Infotech's portfolio: e-commerce, hospital systems, AI chatbots, SEO campaigns, industrial automation, and booking apps. 100+ projects." />
+        <meta name="keywords" content="EliteCrows portfolio, software development projects India, web development case studies, AI chatbot projects, e-commerce development Tamil Nadu, hospital management software, manufacturing MES system" />
+        <meta name="author" content="EliteCrows Infotech" />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+        <link rel="canonical" href="https://elitecrows.in/portfolio" />
+        <meta property="og:site_name" content="EliteCrows Infotech" />
+        <meta property="og:title" content="Portfolio – EliteCrows Infotech | Projects That Define Excellence" />
+        <meta property="og:description" content="A curated selection of digital solutions delivered across e-commerce, healthcare, AI, SEO, industrial, and hospitality industries. 100+ projects completed." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://elitecrows.in/portfolio" />
+        <meta property="og:image" content="https://elitecrows.in/og-image.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="EliteCrows Infotech project portfolio showcase" />
+        <meta property="og:locale" content="en_IN" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@elitecrows" />
+        <meta name="twitter:title" content="EliteCrows Infotech Portfolio – Projects That Define Excellence" />
+        <meta name="twitter:description" content="100+ delivered projects: e-commerce, AI, healthcare, industrial, and more. Explore our work." />
+        <meta name="twitter:image" content="https://elitecrows.in/og-image.jpg" />
+        <meta name="twitter:image:alt" content="EliteCrows Infotech portfolio" />
+        <script type="application/ld+json">{JSON.stringify(portfolioJsonLd)}</script>
+      </Helmet>
+    <main id="main-content" style={{ background: '#FFFFFF', minHeight: '100vh', overflowX: 'hidden' }}>
 
       {/* HERO */}
       <section className="portfolio-hero" style={{ background: 'linear-gradient(180deg, #F9F9FB 0%, #FFFFFF 60%)', padding: 'clamp(60px, 10vw, 112px) 0 64px' }}>
@@ -367,6 +435,7 @@ export default function Portfolio() {
           height: auto;
         }
       `}</style>
-    </div>
+      </main>
+    </>
   )
 }

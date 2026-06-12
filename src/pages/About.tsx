@@ -1,8 +1,8 @@
 import { useRef, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { motion, useInView, useScroll, useTransform } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
 import { Helmet } from 'react-helmet-async'
-import { Target, Eye, Heart, Users, Lightbulb, Zap, ArrowRight, ExternalLink, Sparkles, Award, Globe, Star, Linkedin, ChevronRight, Rocket, Shield, Cpu, TrendingUp } from 'lucide-react'
+import { Target, Eye, Heart, Users, Lightbulb, ArrowRight, Sparkles, Award, Globe, Star, Linkedin, ChevronRight, Rocket, Shield, Cpu, TrendingUp } from 'lucide-react'
 
 /* ─── LIGHT THEME PREMIUM HERO BANNER (Fully Responsive) ─── */
 function HeroBanner() {
@@ -135,14 +135,14 @@ function HeroBanner() {
       <motion.div
         animate={{ y: [0, -15, 0], rotate: [0, 5, 0] }}
         transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-        style={{ position: 'absolute', top: '20%', left: '12%', opacity: 0.06, pointerEvents: 'none', display: 'none', '@media (min-width: 768px)': { display: 'block' } }}
+        style={{ position: 'absolute', top: '20%', left: '12%', opacity: 0.06, pointerEvents: 'none', display: 'block' }}
       >
         <Sparkles size={60} color="#0071E3" />
       </motion.div>
       <motion.div
         animate={{ y: [0, 15, 0], rotate: [0, -5, 0] }}
         transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
-        style={{ position: 'absolute', bottom: '25%', right: '10%', opacity: 0.06, pointerEvents: 'none', display: 'none', '@media (min-width: 768px)': { display: 'block' } }}
+        style={{ position: 'absolute', bottom: '25%', right: '10%', opacity: 0.06, pointerEvents: 'none', display: 'block' }}
       >
         <Globe size={55} color="#00C6FF" />
       </motion.div>
@@ -376,64 +376,111 @@ function LeadershipCard({ member, index }: { member: any; index: number }) {
 
 const milestones = [
   { year: '2023', title: 'Company Founded', desc: 'EliteCrows Infotech was established with a mission to transform digital experiences through custom software and AI-driven solutions.', icon: Star },
-  { year: '2024', title: '100+ Projects Delivered', desc: 'Reached milestone of 100+ successful project deliveries across e-commerce, healthcare, fintech, and manufacturing sectors.', icon: Award },
+  { year: '2024', title: '150+ Projects Delivered', desc: 'Reached milestone of 150+ successful project deliveries across e-commerce, healthcare, fintech, and manufacturing sectors.', icon: Award },
   { year: '2025', title: 'Global Footprint', desc: 'Expanded operations to serve 75+ clients across 15+ countries worldwide, including USA, UK, UAE, and Singapore.', icon: Globe },
   { year: '2026', title: 'AI Innovation Hub', desc: 'Launched dedicated AI research and development center specializing in generative AI, computer vision, and predictive analytics.', icon: Sparkles },
 ]
 
 const leadershipTeam = [
-  { img: '/HOO.jpeg', name: 'Pugal', role: 'Head of Operations', gradientStart: '#0071E3', gradientEnd: '#00C6FF', bio: 'Visionary leader driving operational excellence and digital transformation with over a decade of experience in enterprise technology and process optimization.', linkedin: 'https://www.linkedin.com/in/techiepugal/' },
+  { img: '/Pugal.jpeg', name: 'Pugal', role: 'Head of Operations', gradientStart: '#0071E3', gradientEnd: '#00C6FF', bio: 'Visionary leader driving operational excellence and digital transformation with over a decade of experience in enterprise technology and process optimization.', linkedin: 'https://www.linkedin.com/in/techiepugal/' },
   { img: '/HOB.jpeg', name: 'Dharanish', role: 'Head of Business', gradientStart: '#FF9500', gradientEnd: '#FFB347', bio: 'Strategic business leader focused on growth, client partnerships, and delivering value-driven solutions that align technology with business goals globally.', linkedin: 'https://www.linkedin.com/in/dharanish-azhagesan-859797253/' },
 ]
 
 export default function About() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'AboutPage',
-    name: 'About EliteCrows Infotech – Custom Software & AI Company',
-    description: 'Learn about EliteCrows Infotech, a leading software development and AI solutions provider founded in 2023. We deliver enterprise-grade web applications, cloud integration, and digital marketing services.',
-    url: 'https://elitecrows.com/about',
-    isPartOf: {
-      '@type': 'Organization',
-      name: 'EliteCrows Infotech',
-      foundingDate: '2023',
-      numberOfEmployees: 75,
-      address: {
-        '@type': 'PostalAddress',
-        addressRegion: 'Tamil Nadu',
-        addressCountry: 'IN'
+    '@graph': [
+      {
+        '@type': 'AboutPage',
+        '@id': 'https://elitecrows.in/about#webpage',
+        url: 'https://elitecrows.in/about',
+        name: 'About EliteCrows Infotech – Custom Software & AI Development Company Tamil Nadu',
+        description: 'Learn about EliteCrows Infotech, a leading software development and AI solutions provider founded in 2023 in Tamil Nadu, India. Enterprise-grade web apps, cloud integration, digital marketing.',
+        isPartOf: { '@id': 'https://elitecrows.in/#website' },
+        about: { '@id': 'https://elitecrows.in/#organization' },
+        breadcrumb: {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://elitecrows.in/' },
+            { '@type': 'ListItem', position: 2, name: 'About', item: 'https://elitecrows.in/about' },
+          ],
+        },
+        inLanguage: 'en-IN',
       },
-      knowsAbout: ['Custom Software Development', 'AI Chatbots', 'Cloud Integration', 'SEO Optimization', 'Web Development', 'Digital Transformation']
-    }
+      {
+        '@type': 'Organization',
+        '@id': 'https://elitecrows.in/#organization',
+        name: 'EliteCrows Infotech',
+        url: 'https://elitecrows.in',
+        logo: { '@type': 'ImageObject', url: 'https://elitecrows.in/eclogo.png' },
+        foundingDate: '2023',
+        numberOfEmployees: { '@type': 'QuantitativeValue', value: 75 },
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: 'Gobichettipalayam College Pirivu',
+          addressLocality: 'Gobichettipalayam',
+          addressRegion: 'Tamil Nadu',
+          postalCode: '638453',
+          addressCountry: 'IN',
+        },
+        email: 'info@elitecrows.com',
+        telephone: '+916383106107',
+        knowsAbout: ['Custom Software Development', 'AI Chatbots', 'Cloud Integration', 'SEO Optimization', 'Web Development', 'Digital Transformation'],
+        sameAs: ['https://linkedin.com/company/elitecrows', 'https://twitter.com/elitecrows'],
+      },
+      {
+        '@type': 'Person',
+        '@id': 'https://elitecrows.in/#person-pugal',
+        name: 'Pugal',
+        jobTitle: 'Head of Operations',
+        worksFor: { '@id': 'https://elitecrows.in/#organization' },
+        sameAs: ['https://www.linkedin.com/in/techiepugal/'],
+        image: 'https://elitecrows.in/Pugal.jpeg',
+      },
+      {
+        '@type': 'Person',
+        '@id': 'https://elitecrows.in/#person-dharanish',
+        name: 'Dharanish',
+        jobTitle: 'Head of Business',
+        worksFor: { '@id': 'https://elitecrows.in/#organization' },
+        sameAs: ['https://www.linkedin.com/in/dharanish-azhagesan-859797253/'],
+        image: 'https://elitecrows.in/HOB.jpeg',
+      },
+    ],
   }
 
   return (
     <>
       <Helmet>
-        <html lang="en" />
-        <title>About EliteCrows | Custom Software & AI Development Company</title>
-        <meta name="description" content="EliteCrows Infotech – founded in 2023, we deliver enterprise-grade software, AI solutions, cloud integration, and digital marketing. 150+ projects, 75+ global clients. Learn our story →" />
-        <meta name="keywords" content="about software company, custom software development company, AI solutions provider, web development agency, digital transformation services, EliteCrows Infotech" />
+        <html lang="en" dir="ltr" />
+        <title>About EliteCrows Infotech | Custom Software & AI Development Company – Tamil Nadu</title>
+        <meta name="description" content="EliteCrows Infotech – Tamil Nadu, 2023. Enterprise software, AI solutions, cloud integration, and digital marketing. 150+ projects, 75+ global clients." />
+        <meta name="keywords" content="about EliteCrows Infotech, software development company Tamil Nadu, AI solutions provider India, web development agency Coimbatore, digital transformation company, enterprise software India" />
         <meta name="author" content="EliteCrows Infotech" />
-        <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://elitecrows.com/about" />
-        
-        <meta property="og:title" content="About EliteCrows – Enterprise Software & AI Engineering" />
-        <meta property="og:description" content="Learn about our mission, vision, and the team behind EliteCrows. We build scalable digital products for forward-thinking businesses." />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+        <link rel="canonical" href="https://elitecrows.in/about" />
+        <meta property="og:site_name" content="EliteCrows Infotech" />
+        <meta property="og:title" content="About EliteCrows Infotech – Enterprise Software & AI Engineering" />
+        <meta property="og:description" content="Learn about our mission, vision, and the team behind EliteCrows Infotech. Founded 2023. 150+ projects. 75+ global clients." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://elitecrows.com/about" />
-        <meta property="og:image" content="https://elitecrows.com/about-og.jpg" />
-        
+        <meta property="og:url" content="https://elitecrows.in/about" />
+        <meta property="og:image" content="https://elitecrows.in/og-image.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="EliteCrows Infotech team and leadership" />
+        <meta property="og:locale" content="en_IN" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="About EliteCrows – Custom Software & AI Agency" />
-        <meta name="twitter:description" content="Since 2023, EliteCrows has been delivering high-performance web apps, AI chatbots, and cloud solutions. Meet our leadership and values." />
-        
+        <meta name="twitter:site" content="@elitecrows" />
+        <meta name="twitter:title" content="About EliteCrows Infotech – Custom Software & AI Agency" />
+        <meta name="twitter:description" content="Since 2023, EliteCrows Infotech has delivered high-performance web apps, AI chatbots, and cloud solutions to 75+ global clients." />
+        <meta name="twitter:image" content="https://elitecrows.in/og-image.jpg" />
+        <meta name="twitter:image:alt" content="EliteCrows Infotech – About page" />
         <script type="application/ld+json">
           {JSON.stringify(jsonLd)}
         </script>
       </Helmet>
 
-      <div style={{ background: '#FFFFFF', minHeight: '100vh', overflowX: 'hidden' }}>
+      <main id="main-content" aria-label="About EliteCrows Infotech" style={{ background: '#FFFFFF', minHeight: '100vh', overflowX: 'hidden' }}>
         <HeroBanner />
 
         {/* Story Section - Responsive */}
@@ -705,7 +752,7 @@ export default function About() {
             touch-action: manipulation;
           }
         `}</style>
-      </div>
+      </main>
     </>
   )
 }
