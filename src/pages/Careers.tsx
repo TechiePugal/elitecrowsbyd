@@ -169,6 +169,7 @@ export default function Careers() {
       <Helmet>
         <title>Internships at EliteCrows Infotech | Direct Apply</title>
         <meta name="description" content="Apply for IT internships at EliteCrows Infotech. Web dev, AI, cloud, marketing & cybersecurity. Flexible durations. Certificate + LOR. Direct email application." />
+        <meta name="keywords" content="EliteCrows careers, IT internships India, software development internship, AI internship, cloud internship, digital marketing internship, cybersecurity internship, web development internship, Tamil Nadu internships, remote internship opportunities" />
         <link rel="canonical" href="https://elitecrows.in/careers" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
         <script type="application/ld+json">{JSON.stringify(careersJsonLd)}</script>

@@ -168,7 +168,7 @@ export default function Services() {
         <html lang="en" dir="ltr" />
         <title>Services | EliteCrows Infotech – Web Dev, SEO, AI, Cloud & Cybersecurity India</title>
         <meta name="description" content="EliteCrows Infotech: web dev, SEO, cloud, AI chatbots, industrial automation, and enterprise cybersecurity in Tamil Nadu. Free consultation." />
-        <meta name="keywords" content="custom software development India, SEO services Tamil Nadu, cloud consulting AWS Azure, AI chatbot development, industrial automation software, cybersecurity services India, web development company Coimbatore" />
+        <meta name="keywords" content="custom software development India, web development services, SEO services Tamil Nadu, cloud consulting AWS Azure, AI chatbot development, industrial automation software, cybersecurity services India, DevOps consulting, React and Node.js development, enterprise technology services" />
         <meta name="author" content="EliteCrows Infotech" />
         <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
         <link rel="canonical" href="https://elitecrows.in/services" />

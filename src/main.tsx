@@ -116,6 +116,14 @@ const globalOrganizationJsonLd = {
       description:
         'Enterprise software development agency specializing in AI, cloud infrastructure, and cybersecurity solutions.',
       publisher: { '@id': 'https://elitecrows.in/#organization' },
+      potentialAction: {
+        '@type': 'SearchAction',
+        target: {
+          '@type': 'EntryPoint',
+          urlTemplate: 'https://elitecrows.in/?q={search_term_string}',
+        },
+        'query-input': 'required name=search_term_string',
+      },
       inLanguage: 'en-IN',
     },
   ],
@@ -125,7 +133,7 @@ function Root() {
   return (
     <>
       <Helmet
-        defaultTitle="EliteCrows Infotech | Custom Software, AI & Cloud Development Agency"
+        defaultTitle="EliteCrows Infotech | Enterprise Software, AI Automation, Cloud & Cybersecurity"
         titleTemplate="%s | EliteCrows Infotech"
         htmlAttributes={{ lang: 'en', dir: 'ltr' }}
       >
@@ -137,7 +145,7 @@ function Root() {
         />
         <meta
           name="keywords"
-          content="custom software development, AI automation, cloud consulting, cybersecurity services, React development, Next.js agency, enterprise software India, Tamil Nadu IT company"
+          content="custom software development company, enterprise software development, AI automation agency, AI chatbot development, cloud consulting, cloud migration services, cybersecurity services, React development, Node.js development, Next.js development, AWS consulting, DevOps services, digital transformation, web app development, Tamil Nadu software company, India IT services"
         />
         <meta name="author" content="EliteCrows Infotech" />
         <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />

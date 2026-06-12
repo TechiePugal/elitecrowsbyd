@@ -318,7 +318,7 @@ export default function Portfolio() {
         <html lang="en" dir="ltr" />
         <title>Portfolio | EliteCrows Infotech – Project Case Studies & Work Showcase</title>
         <meta name="description" content="Browse EliteCrows Infotech's portfolio: e-commerce, hospital systems, AI chatbots, SEO campaigns, industrial automation, and cloud solutions. 100+ projects." />
-        <meta name="keywords" content="EliteCrows portfolio, software development projects India, web development case studies, AI chatbot projects, e-commerce development Tamil Nadu, hospital management software, manufacturing MES system, cloud migration portfolio" />
+        <meta name="keywords" content="EliteCrows portfolio, software development projects India, enterprise web development case studies, AI chatbot projects, e-commerce development Tamil Nadu, hospital management software, manufacturing MES system, cloud migration portfolio, digital marketing case studies, cybersecurity solutions" />
         <meta name="author" content="EliteCrows Infotech" />
         <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
         <link rel="canonical" href="https://elitecrows.in/portfolio" />

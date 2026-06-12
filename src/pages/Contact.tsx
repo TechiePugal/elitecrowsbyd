@@ -135,7 +135,7 @@ export default function Contact() {
       <Helmet>
         <title>Contact EliteCrows Infotech | Free Consultation – Tamil Nadu</title>
         <meta name="description" content="Contact EliteCrows Infotech for web dev, AI, cloud, SEO, and cybersecurity. Free quote within 24 hours. Serving Tamil Nadu and worldwide." />
-        <meta name="keywords" content="contact EliteCrows Infotech, software development consultation, AI solutions quote, cloud services contact, digital marketing agency, cybersecurity experts India" />
+        <meta name="keywords" content="contact EliteCrows Infotech, software development consultation, AI solutions quote, cloud services contact, web app development quote, digital transformation agency, cybersecurity experts India, React development company, enterprise software consultation, Tamil Nadu IT services" />
         <link rel="canonical" href="https://elitecrows.in/contact" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
         <script type="application/ld+json">{JSON.stringify(contactJsonLd)}</script>

@@ -459,7 +459,7 @@ export default function Home() {
         <html lang="en" dir="ltr" />
         <title>EliteCrows Infotech | Enterprise Software, AI & Cloud Development Agency – India</title>
         <meta name="description" content="EliteCrows Infotech builds web apps, AI chatbots, cloud infrastructure, and cybersecurity for enterprises. 150+ projects delivered. Book a free strategy call." />
-        <meta name="keywords" content="custom software development India, AI automation agency, cloud consulting Tamil Nadu, cybersecurity services, React Next.js development, enterprise software company, GPT integration, cloud migration DevOps, elitecrows infotech" />
+        <meta name="keywords" content="custom software development India, enterprise software development, AI automation agency, AI chatbot development, cloud consulting Tamil Nadu, cloud migration services, cybersecurity services, React development, Node.js development, Next.js development, AWS consulting, DevOps services, digital transformation, elitecrows infotech" />
         <meta name="author" content="EliteCrows Infotech" />
         <link rel="canonical" href="https://elitecrows.in/" />
         <meta property="og:site_name" content="EliteCrows Infotech" />
@@ -475,7 +475,7 @@ export default function Home() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@elitecrows" />
         <meta name="twitter:title" content="EliteCrows Infotech – Enterprise Software, AI & Cloud Engineering" />
-        <meta name="twitter:description" content="Custom software development, AI chatbots, cloud infrastructure, and cybersecurity for forward-thinking enterprises. 10+ projects." />
+        <meta name="twitter:description" content="Custom software development, AI chatbots, cloud infrastructure, and cybersecurity for forward-thinking enterprises. 150+ projects delivered." />
         <meta name="twitter:image" content="https://elitecrows.in/og-image.jpg" />
         <meta name="twitter:image:alt" content="EliteCrows Infotech – Enterprise Software, AI & Cloud Engineering" />5
         <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>

@@ -455,7 +455,7 @@ export default function About() {
         <html lang="en" dir="ltr" />
         <title>About EliteCrows Infotech | Custom Software & AI Development Company – Tamil Nadu</title>
         <meta name="description" content="EliteCrows Infotech – Tamil Nadu, 2023. Enterprise software, AI solutions, cloud integration, and digital marketing. 150+ projects, 75+ global clients." />
-        <meta name="keywords" content="about EliteCrows Infotech, software development company Tamil Nadu, AI solutions provider India, web development agency Coimbatore, digital transformation company, enterprise software India" />
+        <meta name="keywords" content="about EliteCrows Infotech, software development company Tamil Nadu, enterprise software partner, AI solutions provider India, cloud integration services, digital transformation company, custom web development agency, React development company, cybersecurity services India, IT services company" />
         <meta name="author" content="EliteCrows Infotech" />
         <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
         <link rel="canonical" href="https://elitecrows.in/about" />
