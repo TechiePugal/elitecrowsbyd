@@ -207,7 +207,13 @@
     }
     </script>
   </head>
-  <body>
+  <body class="app-loading">
+    <div id="page-loader" aria-hidden="true">
+      <div class="page-loader__panel">
+        <img class="page-loader__logo" src="/eclogo.png" alt="EliteCrows Infotech" width="140" height="140" />
+        <div class="page-loader__text">Welcome to EliteCrows</div>
+      </div>
+    </div>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

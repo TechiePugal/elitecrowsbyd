@@ -221,6 +221,21 @@ function Root() {
 }
 
 const rootElement = document.getElementById('root')!;
+const minimumLoaderDelay = new Promise<void>((resolve) => {
+  window.setTimeout(resolve, 2000);
+});
+const pageLoadComplete =
+  document.readyState === 'complete'
+    ? Promise.resolve()
+    : new Promise<void>((resolve) => {
+        window.addEventListener('load', () => resolve(), { once: true });
+      });
+
+Promise.all([minimumLoaderDelay, pageLoadComplete]).then(() => {
+  document.body.classList.add('page-ready');
+  document.body.classList.remove('app-loading');
+});
+
 const app = (
   <React.StrictMode>
     <HelmetProvider>
