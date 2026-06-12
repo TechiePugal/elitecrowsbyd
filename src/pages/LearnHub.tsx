@@ -588,7 +588,7 @@ Submitted via LearnHub Page
             whileTap={{ scale: 0.95 }}
             style={{
               position: 'fixed',
-              right: '330px',
+              right: '325px',
               bottom: '40px',
               zIndex: 999,
               width: '50px',
