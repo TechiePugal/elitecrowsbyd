@@ -282,106 +282,119 @@ export default function Navigation() {
       </div>
 
       {/* Mobile Menu Overlay */}
-      <AnimatePresence>
-        {mobileOpen && (
-          <motion.div
-            ref={mobileMenuRef}
-            initial={{ opacity: 0, y: -12, scale: 0.97 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -12, scale: 0.97 }}
-            transition={{ duration: 0.2, ease: 'easeOut' }}
+{/* Mobile Menu Overlay */}
+<AnimatePresence>
+  {mobileOpen && (
+    <motion.div
+      ref={mobileMenuRef}
+      id="mobile-menu"
+      initial={{ opacity: 0, x: 60 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: 60 }}
+      transition={{ duration: 0.25 }}
+      style={{
+        position: 'fixed',
+        top: '78px',
+        right: '16px',
+        width: '280px',
+        background: cssVars.navMobileBg,
+        backdropFilter: 'blur(24px)',
+        WebkitBackdropFilter: 'blur(24px)',
+        padding: '20px 16px',
+        borderRadius: '20px',
+        border: `1px solid ${cssVars.border}`,
+        boxShadow: cssVars.shadowCardHover,
+        zIndex: 1001,
+        overflow: 'hidden',
+        pointerEvents: 'auto',
+      }}
+    >
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '8px',
+        }}
+      >
+        {navLinks.map((link, i) => {
+          const isActive = location.pathname === link.path
+
+          return (
+            <motion.div
+              key={link.path}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{
+                delay: i * 0.05,
+                duration: 0.2,
+              }}
+            >
+              <Link
+                to={link.path}
+                onClick={handleMobileLinkClick}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  textAlign: 'center',
+                  width: '100%',
+                  padding: '14px 16px',
+                  borderRadius: '12px',
+                  textDecoration: 'none',
+                  fontSize: '16px',
+                  fontWeight: 800,
+                  letterSpacing: '0.3px',
+                  color: isActive
+                    ? cssVars.accent
+                    : cssVars.textPrimary,
+                  background: isActive
+                    ? cssVars.accentLight
+                    : 'transparent',
+                  transition: 'all 0.2s ease',
+                }}
+              >
+                {link.label}
+              </Link>
+            </motion.div>
+          )
+        })}
+
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{
+            delay: navLinks.length * 0.05,
+            duration: 0.2,
+          }}
+          style={{ marginTop: '12px' }}
+        >
+          <Link
+            to="/contact"
+            onClick={handleMobileLinkClick}
             style={{
-              position: 'fixed',
-              top: 'clamp(70px, 15vh, 90px)',
-              left: '16px',
-              right: '16px',
-              maxWidth: '400px',
-              margin: '0 auto',
-              background: cssVars.navMobileBg,
-              backdropFilter: 'blur(24px)',
-              WebkitBackdropFilter: 'blur(24px)',
-              padding: '20px 16px',
-              borderRadius: '28px',
-              border: `1px solid ${cssVars.border}`,
-              boxShadow: cssVars.shadowCardHover,
-              zIndex: 1001,
-              maxHeight: 'calc(100vh - 100px)',
-              overflowY: 'auto',
-              pointerEvents: 'auto',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              textAlign: 'center',
+              width: '100%',
+              padding: '14px',
+              borderRadius: '50px',
+              textDecoration: 'none',
+              fontSize: '16px',
+              fontWeight: 800,
+              letterSpacing: '0.3px',
+              color: '#fff',
+              background: `linear-gradient(135deg, ${cssVars.accent}, #00C6FF)`,
+              boxShadow: '0 8px 20px rgba(0,113,227,0.25)',
             }}
           >
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-              {navLinks.map((link, i) => {
-                const isActive = location.pathname === link.path
-                return (
-                  <motion.div
-                    key={link.path}
-                    initial={{ opacity: 0, x: -8 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.04, duration: 0.18 }}
-                  >
-                    <Link
-                      to={link.path}
-                      onClick={handleMobileLinkClick}
-                      style={{
-                        padding: '14px 18px',
-                        borderRadius: '14px',
-                        fontSize: '16px',
-                        fontWeight: 600,
-                        color: isActive ? cssVars.accent : cssVars.textPrimary,
-                        background: isActive ? cssVars.accentLight : 'transparent',
-                        textDecoration: 'none',
-                        transition: 'all 0.15s ease',
-                        minHeight: '52px',
-                        display: 'flex',
-                        alignItems: 'center',
-                        WebkitTapHighlightColor: 'transparent',
-                        touchAction: 'manipulation',
-                      }}
-                    >
-                      {link.label}
-                    </Link>
-                  </motion.div>
-                )
-              })}
-
-              <motion.div
-                initial={{ opacity: 0, x: -8 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: navLinks.length * 0.04, duration: 0.18 }}
-                style={{ marginTop: '12px' }}
-              >
-                <Link
-                  to="/contact"
-                  onClick={handleMobileLinkClick}
-                  style={{
-                    padding: '14px 24px',
-                    fontSize: '15px',
-                    justifyContent: 'center',
-                    background: `linear-gradient(135deg, ${cssVars.accent}, #00C6FF)`,
-                    color: 'white',
-                    borderRadius: '50px',
-                    textDecoration: 'none',
-                    fontWeight: 600,
-                    textAlign: 'center',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '8px',
-                    transition: 'transform 0.2s',
-                    minHeight: '52px',
-                    WebkitTapHighlightColor: 'transparent',
-                    touchAction: 'manipulation',
-                  }}
-                  onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.02)')}
-                  onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
-                >
-                  Get Started
-                </Link>
-              </motion.div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            Get Started
+          </Link>
+        </motion.div>
+      </div>
+    </motion.div>
+  )}
+</AnimatePresence>
 
       <style>{`
         @media (max-width: 991px) {
