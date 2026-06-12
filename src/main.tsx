@@ -133,7 +133,7 @@ function Root() {
   return (
     <>
       <Helmet
-        defaultTitle="EliteCrows Infotech | Enterprise Software, AI Automation, Cloud & Cybersecurity"
+        defaultTitle="EliteCrows Infotech – Custom Software, AI & Cloud Agency"
         titleTemplate="%s | EliteCrows Infotech"
         htmlAttributes={{ lang: 'en', dir: 'ltr' }}
       >
